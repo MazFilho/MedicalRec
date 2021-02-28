@@ -1,4 +1,5 @@
 ﻿using MedicalRec.Dominio.Entidades;
+using MedicalRec.Repositorio.Config;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicalRec.Repositorio.Contexto
@@ -14,5 +15,14 @@ namespace MedicalRec.Repositorio.Contexto
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Classes de mapeamento
+            modelBuilder.ApplyConfiguration(new MedicoConfiguration());
+            modelBuilder.ApplyConfiguration(new EspecialidadeConfigurtion());
+            modelBuilder.ApplyConfiguration(new EnderecoConfiguration());
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
