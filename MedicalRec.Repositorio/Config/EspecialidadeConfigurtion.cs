@@ -10,7 +10,13 @@ namespace MedicalRec.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<Especialidade> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(e => e.Id);
+
+            builder
+                .Property(e => e.Nome)
+                .IsRequired()
+                .HasMaxLength(70);
+                
         }
     }
 }
