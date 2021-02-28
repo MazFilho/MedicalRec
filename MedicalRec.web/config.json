@@ -1,0 +1,7 @@
+{
+  "ConnectionStrings": {
+    "MedicalRecDB": "Server=localhost;Database=MedicalRecDB;Uid=root;Pwd=Maz14;"
+
+    //"server=localhost;uid=root;pwd=Maz14;database=MedicalRecDB;"
+  }
+}

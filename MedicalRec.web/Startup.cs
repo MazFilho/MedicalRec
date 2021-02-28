@@ -26,7 +26,7 @@ namespace MedicalRec.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            var connectionString = Configuration.GetConnectionString("MySqlConnection");
+            var connectionString = Configuration.GetConnectionString("MedicalRecDB");
             services.AddDbContext<MedicalRecContexto>(option => option.UseMySql(connectionString, m => m.MigrationsAssembly("MedicalRec.Repositorio")));
 
             // In production, the Angular files will be served from this directory
