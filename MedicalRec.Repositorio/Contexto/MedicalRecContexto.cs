@@ -9,5 +9,10 @@ namespace MedicalRec.Repositorio.Contexto
         public DbSet<Especialidade> Especialidades { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
 
+        public MedicalRecContexto(DbContextOptions options) : base(options)
+        {
+
+        }
+
     }
 }
