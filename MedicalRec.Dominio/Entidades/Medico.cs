@@ -1,18 +1,28 @@
-﻿namespace MedicalRec.Dominio.Entidades
+﻿using System.Collections.Generic;
+
+namespace MedicalRec.Dominio.Entidades
 {
     public class Medico
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public int CRM { get; set; } //somente numeros no formato (00.000.00)
-        
+
         //public String TelFixo { get; set; }
-        
+
         //public string TelCel { get; set; }
+        
+        /// <summary>
+        /// Medico deve ter no minimo duas especialidades
+        /// ou mais
+        /// </summary>
+        public ICollection<Especialidade> Especialidades { get; set; }
 
-        // CEP e Especialidade, minimo duas.
+        // CEP (Endereço).
 
-        //Endereco
+        public int EnderecoId { get; set; }
+
+
 
     }
 }
