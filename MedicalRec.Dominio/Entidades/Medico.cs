@@ -35,6 +35,9 @@ namespace MedicalRec.Dominio.Entidades
 
             //
             //    AdicionarCritica("CRM deve estar preenchido");
+           
+
+
         }
     }
 }
