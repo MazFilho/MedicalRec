@@ -15,7 +15,7 @@ namespace MedicalRec.Dominio.Entidades
         /// Medico deve ter no minimo duas especialidades
         /// ou mais
         /// </summary>
-        public ICollection<Especialidade> Especialidades { get; set; }
+        public virtual ICollection<Especialidade> Especialidades { get; set; }
 
         // CEP (Endereço).
 

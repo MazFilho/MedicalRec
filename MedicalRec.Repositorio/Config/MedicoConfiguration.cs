@@ -32,12 +32,15 @@ namespace MedicalRec.Repositorio.Config
                 .HasMaxLength(20);
 
             //Outra Table
-            //builder
-            //    .Property(m => m.EnderecoId);
+            builder
+                .Property(m => m.EnderecoId)
+                .IsRequired();
 
+            builder.Property(m => m.Especialidades);
             //ICollection <Especialidades>
-            //builder
-            //    .Property(m => m.Especialidades);
+           // builder
+           //     .HasMany(m => m.Especialidades)
+           //     .HasMany(e => e.Medico);
                 
         }
     }

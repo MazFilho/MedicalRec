@@ -33,7 +33,7 @@ namespace MedicalRec.Repositorio.Config
                 .IsRequired()
                 .HasColumnType("00000-000");
 
-
+            
 
 
 
