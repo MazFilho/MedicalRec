@@ -1,18 +1,22 @@
 ﻿using MedicalRec.Dominio.Contratos;
+using MedicalRec.Repositorio.Contexto;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MedicalRec.Repositorio.Repositorios
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
-        public BaseRepositorio()
-        {
+        private readonly MedicalRecContexto _medicalRecContexto;
 
+        public BaseRepositorio(MedicalRecContexto medicalRecContexto)
+        {
+            _medicalRecContexto = medicalRecContexto;
         }
 
         public void Adicionar(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            _medicalRecContexto.Set<TEntity>().Add(entity);
         }
 
         public void Atualizar(TEntity entity)
@@ -27,7 +31,7 @@ namespace MedicalRec.Repositorio.Repositorios
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            throw new System.NotImplementedException();
+            return _medicalRecContexto.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
