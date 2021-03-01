@@ -30,8 +30,8 @@ namespace MedicalRec.Repositorio.Config
 
             builder
                 .Property(en => en.CEP)
-                .IsRequired()
-                .HasColumnType("00000-000");
+                .IsRequired();
+                //.HasColumnType("00000-000");
 
             
 

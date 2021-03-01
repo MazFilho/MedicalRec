@@ -17,11 +17,24 @@ namespace MedicalRec.Repositorio.Migrations
                     Bairro = table.Column<string>(maxLength: 50, nullable: true),
                     Cidade = table.Column<string>(maxLength: 50, nullable: true),
                     Estado = table.Column<string>(maxLength: 20, nullable: true),
-                    CEP = table.Column<string>(type: "00000-000", nullable: false)
+                    CEP = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Enderecos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Especialidades",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(maxLength: 70, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Especialidades", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -31,7 +44,7 @@ namespace MedicalRec.Repositorio.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(maxLength: 120, nullable: false),
-                    CRM = table.Column<int>(type: "00.000.00", maxLength: 9, nullable: false),
+                    CRM = table.Column<int>(maxLength: 9, nullable: false),
                     TelFixo = table.Column<string>(maxLength: 20, nullable: true),
                     TelCel = table.Column<string>(maxLength: 20, nullable: true),
                     EnderecoId = table.Column<int>(nullable: false)
@@ -42,35 +55,42 @@ namespace MedicalRec.Repositorio.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Especialidades",
+                name: "MedicoEspecialidades",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(maxLength: 70, nullable: false),
-                    MedicoId = table.Column<int>(nullable: true)
+                    MedicoId = table.Column<int>(nullable: false),
+                    EspecialidadeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Especialidades", x => x.Id);
+                    table.PrimaryKey("PK_MedicoEspecialidades", x => new { x.MedicoId, x.EspecialidadeId });
                     table.ForeignKey(
-                        name: "FK_Especialidades_Medicos_MedicoId",
+                        name: "FK_MedicoEspecialidades_Especialidades_EspecialidadeId",
+                        column: x => x.EspecialidadeId,
+                        principalTable: "Especialidades",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MedicoEspecialidades_Medicos_MedicoId",
                         column: x => x.MedicoId,
                         principalTable: "Medicos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Especialidades_MedicoId",
-                table: "Especialidades",
-                column: "MedicoId");
+                name: "IX_MedicoEspecialidades_EspecialidadeId",
+                table: "MedicoEspecialidades",
+                column: "EspecialidadeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Enderecos");
+
+            migrationBuilder.DropTable(
+                name: "MedicoEspecialidades");
 
             migrationBuilder.DropTable(
                 name: "Especialidades");

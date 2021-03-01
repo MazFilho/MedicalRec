@@ -20,8 +20,8 @@ namespace MedicalRec.Repositorio.Config
             builder
                 .Property(m => m.CRM)
                 .IsRequired()
-                .HasMaxLength(9)
-                .HasColumnType("00.000.00");
+                .HasMaxLength(9);
+                //.HasColumnType("00.000.00");
 
             builder
                 .Property(m => m.TelFixo)

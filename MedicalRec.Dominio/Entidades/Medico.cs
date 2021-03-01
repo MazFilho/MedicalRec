@@ -10,12 +10,14 @@ namespace MedicalRec.Dominio.Entidades
         public int CRM { get; set; } //somente numeros no formato (00.000.00)
         public string TelFixo { get; set; }
         public string TelCel { get; set; }
-        
+
         /// <summary>
         /// Medico deve ter no minimo duas especialidades
         /// ou mais
         /// </summary>
-        public virtual ICollection<Especialidade> Especialidades { get; set; }
+        //public virtual ICollection<Especialidade> Especialidades { get; set; }
+
+        public virtual ICollection<MedicoEspecialidade> MedicoEspecialidades { get; set; }
 
         // CEP (Endereço).
 
@@ -25,7 +27,7 @@ namespace MedicalRec.Dominio.Entidades
         {
             LimparMensagensValidacao();
 
-            if (!Especialidades.Any())
+            if (!MedicoEspecialidades.Any())
                 AdicionarCritica("Deve conter ao mínimo duas Especialidades.");
             
             if (string.IsNullOrEmpty(Nome))
