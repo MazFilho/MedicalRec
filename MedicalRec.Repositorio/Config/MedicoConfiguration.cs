@@ -36,7 +36,7 @@ namespace MedicalRec.Repositorio.Config
                 .Property(m => m.EnderecoId)
                 .IsRequired();
 
-            builder.Property(m => m.Especialidades);
+            //builder.Property(m => m.Especialidades);
             //ICollection <Especialidades>
            // builder
            //     .HasMany(m => m.Especialidades)
