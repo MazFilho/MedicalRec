@@ -16,7 +16,8 @@ namespace MedicalRec.Repositorio.Config
                 .Property(e => e.Nome)
                 .IsRequired()
                 .HasMaxLength(70);
-                
+
+            
         }
     }
 }

@@ -18,11 +18,27 @@ namespace MedicalRec.Repositorio.Contexto
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             // Classes de mapeamento
             modelBuilder.ApplyConfiguration(new MedicoConfiguration());
             modelBuilder.ApplyConfiguration(new EspecialidadeConfigurtion());
             modelBuilder.ApplyConfiguration(new EnderecoConfiguration());
             modelBuilder.ApplyConfiguration(new MedicoEspecialidadeConfigurtion());
+
+            modelBuilder.Entity<Especialidade>()
+               .HasData(
+                    new Especialidade() { Id = 1, Nome = "Alergologia" },
+                    new Especialidade() { Id = 2, Nome = "Angiologia" },
+                    new Especialidade() { Id = 3, Nome = "Buco Maxilo" },
+                    new Especialidade() { Id = 4, Nome = "Cardiologia Clínica" },
+                    new Especialidade() { Id = 5, Nome = "Cardiologia Infantil" },
+                    new Especialidade() { Id = 6, Nome = "Cirurgia Cabeça e Pescoço" },
+                    new Especialidade() { Id = 7, Nome = "Cirurgia Cardíaca" },
+                    new Especialidade() { Id = 8, Nome = "Cirurgia de Tórax" }
+                    );
+
+
+
 
             base.OnModelCreating(modelBuilder);
         }
