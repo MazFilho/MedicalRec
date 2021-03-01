@@ -1,4 +1,6 @@
+using MedicalRec.Dominio.Contratos;
 using MedicalRec.Repositorio.Contexto;
+using MedicalRec.Repositorio.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,11 @@ namespace MedicalRec.web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             var connectionString = Configuration.GetConnectionString("MedicalRecDB");
             services.AddDbContext<MedicalRecContexto>(option => option.UseLazyLoadingProxies().UseMySql(connectionString, m => m.MigrationsAssembly("MedicalRec.Repositorio")));
+
+            services.AddScoped<IMedicoRepositorio, MedicoRepositorio>();
+
+
+
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
