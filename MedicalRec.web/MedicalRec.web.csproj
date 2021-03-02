@@ -25,7 +25,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\medico\medico.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MedicalRec.Repositorio\MedicalRec.Repositorio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\medico\medico.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
